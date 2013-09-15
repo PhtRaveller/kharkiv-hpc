@@ -94,10 +94,9 @@ def scan_clean(filein, fileout=None):
 
     try:
         with open(filein, 'r') as fin, open(fileout, 'w') as fout:
+            header = fin.readline()
+            fout.write(header)
             for line in fin:
-                if line.find('#') != -1:
-                    fout.write(line)
-                    continue
                 numbers = [float(strnum) for strnum in line.lower().split(' ')[1:]]
                 if sum(numbers) < .5 * len(numbers):
                     fout.write(line)
