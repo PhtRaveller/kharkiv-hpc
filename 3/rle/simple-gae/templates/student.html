@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <title>Simple GAE Example</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <a href="/">
+                <h3>Main Page</h3>
+            </a>
+            {% if student is defined %}
+                <h2>{{student.name}}</h2>
+                <h3>{{student.group}}</h3>
+            {% else %}
+                <h3>This is stub</h3>
+            {% endif %}
+        </div>
+    </body>
+</html>

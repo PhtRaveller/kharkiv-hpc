@@ -23,11 +23,11 @@ class MainHandler(webapp2.RequestHandler):
         #Remember, this returns so-called cursor, not a list of entities
         students = Student.all()
         #Loading template
-    	tpl = jinja2_env.get_template('main.html')
+        tpl = jinja2_env.get_template('main.html')
         #Creating the context, which will be used to fill template
         render_context = {'students': students} if students.count() != 0 else {}
         #Rendering template
-    	result = tpl.render(render_context)
+        result = tpl.render(render_context)
         #Sending response
         self.response.write(result)
 
@@ -48,3 +48,16 @@ class AddHandler(webapp2.RequestHandler):
         student.put()
         #Redirect to home page
         self.redirect('/')
+
+class StudentInfoHandler(webapp2.RequestHandler):
+    '''This handler returns student info on a separate page. Supports
+    only GET requests.
+
+    '''
+    def get(self, student_id):
+        #TODO: Put your code here
+        #Below is stub code
+        tpl = jinja2_env.get_template('student.html')
+        render_context = {}
+        result = tpl.render(render_context)
+        self.response.write(result)
