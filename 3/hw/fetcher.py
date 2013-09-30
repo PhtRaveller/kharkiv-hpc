@@ -10,7 +10,6 @@ sequence in class hierarchy.
 
 import json
 import urllib2
-#Do we need ant additional imports?
 
 class WBDataFetcher(object):
     """Main class to fetch and process data from World Bank.
@@ -103,14 +102,15 @@ class Loader(object):
             Dictionary with data in WB format. Check WB docs.
 
         '''
-        #TODO: Your code here
-        #Remember to handle empty response from WB databank
-        #First, you need to form a request to WB databank
-        #URL to request will look like this:
         url = Loader._request_template.format(country=country, indicator=indicator)
-        #Second, parse the JSON result
-        #Third, extract actual data from it
-        return {}
+        request_result = urllib2.urlopen(url).read()
+        parsed_result = json.loads(request_result)
+        out_result = [(int(record['date']), float(record['value'])) for record in parsed_result[1]]
+        out_result = (self._extract_indicator_desc(parsed_result), out_result)
+        return out_result
+
+    def _extract_indicator_desc(self, records):
+        return records[1][0]['indicator']['value']
 
 class CachingLoader(Loader):
     """This child of Loader class will cache data and return it if
@@ -144,6 +144,8 @@ class PostProcessor(object):
     before returning it to user.
 
     """
+    _header_string = "Indicator: %s"
+    _record_string = "%d: %f"
     def __init__(self, *args, **kwargs):
         #Again, fell free to do any initialization needed
         pass
@@ -164,6 +166,7 @@ class PostProcessor(object):
             Some result. Be creative:) Or leave it empty.
 
         '''
-        #TODO: Your code here
-        #Stub code below
+        print(PostProcessor._header_string % data[0])
+        for record in data[1]:
+            print(PostProcessor._record_string % record)
         return data

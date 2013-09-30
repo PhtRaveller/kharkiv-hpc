@@ -18,4 +18,4 @@ if __name__ == "__main__":
         loader = CachingLoader()
         pproc = PostProcessor()
         datafetcher = WBDataFetcher(loader, pproc)
-        print datafetcher.fetch(sys.argv[1], sys.argv[2])
+        datafetcher.fetch(sys.argv[1], sys.argv[2])
