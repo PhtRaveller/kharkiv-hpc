@@ -55,9 +55,8 @@ class StudentInfoHandler(webapp2.RequestHandler):
 
     '''
     def get(self, student_id):
-        #TODO: Put your code here
-        #Below is stub code
+        student = Student.get_by_id(int(student_id))
         tpl = jinja2_env.get_template('student.html')
-        render_context = {}
+        render_context = {'student':student}
         result = tpl.render(render_context)
         self.response.write(result)
