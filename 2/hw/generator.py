@@ -5,7 +5,7 @@ import numpy as np
 
 USAGE = 'Usage: python generator.py <numcolumns> <numlines> [filename]'
 DEFAULT_FILENAME = "experiment.dat"
-NAN_PORTION = 0.2
+NAN_PORTION = 0.05
 
 def check_cl_params(params):
     '''Function to check whether CL params are correct.
