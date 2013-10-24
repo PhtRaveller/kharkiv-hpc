@@ -25,13 +25,14 @@ done
 
 # Note command substitution and test brackets
 echo -e "\nTesting who you are:"
-if [ $(id -u) -eq 0 ]; then
+if [ $(id -u) -eq 0 ]
+then
     echo "You're a root"
 else
     echo "You're ordinary user with ID $(id -u)"
 fi
 
-# Using classical if clause
+# Using classical if clause. Note semicolon before then
 echo -e "\nLooking, whether we have git repo here:"
 if git branch &> /dev/null; then
     echo "We have repo here, branch is $(git branch | sed 's#* ##')"
