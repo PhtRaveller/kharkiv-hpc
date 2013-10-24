@@ -27,7 +27,7 @@ done
 echo -e "\nTesting who you are:"
 if [ $(id -u) -eq 0 ]
 then
-    echo "You're a root"
+    echo "You're root"
 else
     echo "You're ordinary user with ID $(id -u)"
 fi
