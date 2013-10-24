@@ -31,6 +31,7 @@ else
     echo "You're ordinary user with ID $(id -u)"
 fi
 
+# Using classical if clause
 echo -e "\nLooking, whether we have git repo here:"
 if git branch &> /dev/null; then
     echo "We have repo here, branch is $(git branch | sed 's#* ##')"
