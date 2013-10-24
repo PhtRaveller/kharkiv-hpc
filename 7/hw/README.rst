@@ -1,5 +1,9 @@
 Домашнее задание #7
 -------------------
+.. raw:: html
+
+    <style>.red {color:red}</style>
+
 .. role:: red
 
 Задание 1.
