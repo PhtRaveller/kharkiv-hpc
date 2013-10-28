@@ -11,8 +11,7 @@ if __name__ == "__main__":
 	if cid == 0:
 		# OK, we're in child process. Let's exec PDF viewer here
 		print "I'm a child. My ID is %i" % os .getpid()
-		os.execlp('evince', 'evince', '/home/traveller/Desktop/64-ia-32-architectures-software-developer-manual-325462.pdf')
-
+		os.execlp('evince', 'evince')
 	else:
 		print "I'm going to sleep for 20s."
 		time.sleep(20)
