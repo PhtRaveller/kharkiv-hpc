@@ -12,7 +12,10 @@ if __name__ == "__main__":
 		# OK, we're in child process. Let's exec PDF viewer here
 		print "I'm a child. My ID is %i" % os .getpid()
 		os.execlp('evince', 'evince')
+		print "In fact, this will not be printed typically."
 	else:
+		print "I've created a child with PID %i" % cid
 		print "I'm going to sleep for 20s."
 		time.sleep(20)
+		print "Ok, parent exits now."
 		sys.exit()
